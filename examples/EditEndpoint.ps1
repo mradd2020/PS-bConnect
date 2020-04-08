@@ -1,8 +1,8 @@
 # Variables for Script Execution
 $MyUser = "YourUser"
 $MyPlainPW = "YourPw"
-$baraServer = "BARA-SRV"
-$Client = "ExampleHost1"
+$baraServer = "SrvIP"
+$Client = "ExampleClient1"
 $User = "String"
 $Comment = "String2"
 
@@ -20,7 +20,7 @@ Initialize-bConnect -Server $baraServer -Credentials $cred
 # e.g. search term PC12 - returned endpoints PC12 & PC120)
 $epGUID = Search-bConnectEndpoint -Term $Client | Where-Object {$_.Name -eq $Client}
 
-# Get endpoint and change registered user and comments in endpoint object
+# Get endpoint and update registered user and comments in endpoint object
 $ep = Get-bConnectEndpoint -EndpointGuid $epGUID.id
 $ep.PrimaryUser = $User
 $ep.Comments = $Comment
